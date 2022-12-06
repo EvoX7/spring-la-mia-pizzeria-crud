@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.pizzeria.italy.pojo.Drink;
-import org.pizzeria.italy.pojo.Pizza;
-import org.pizzeria.italy.service.PizzaService;
+import org.pizzeria.italy.service.DrinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.BindingResultUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,32 +20,32 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("/")
-public class PizzaController {
+@RequestMapping("/drink")
+public class DrinkController {
 
 	@Autowired
-	public PizzaService pizzaService;
+	public DrinkService drinkService;
 
 	@GetMapping
-	public String getPizzas(Model model) {
+	public String getDrinks(Model model) {
 
-		List<Pizza> pizzas = pizzaService.findAll();
-		model.addAttribute("pizzas", pizzas);
+		List<Drink> drinks = drinkService.findAll();
+		model.addAttribute("drinks", drinks);
 
-		return "index";
+		return "index2";
 	}
 
-	@GetMapping("/pizza/create")
-	public String createNewPizza(Model model) {
+	@GetMapping("/create")
+	public String createNewDrink(Model model) {
 
-		Pizza pizza = new Pizza();
-		model.addAttribute("pizza", pizza);
+		Drink drink = new Drink();
+		model.addAttribute("drink", drink);
 
-		return "pizza-create";
+		return "drink-create";
 	}
 
-	@PostMapping("/pizza/create")
-	public String getStoreDrink(@Valid Pizza pizza, 
+	@PostMapping("/create")
+	public String getStoreDrink(@Valid Drink drink, 
 			BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 		
 		if (bindingResult.hasErrors()) {
@@ -56,38 +56,38 @@ public class PizzaController {
 			
 			redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
 			
-			return "redirect:/pizza/create";
+			return "redirect:/drink/create";
 		}
 		
-		pizzaService.save(pizza);
+		drinkService.save(drink);
 		
-		return "redirect:/";
+		return "redirect:/drink";
 	}
 
-	@GetMapping("/pizza/edit/{id}")
-	public String editPizza(@PathVariable("id") int id, Model model) {
+	@GetMapping("/edit/{id}")
+	public String editDrink(@PathVariable("id") int id, Model model) {
 
-		Optional<Pizza> optPizza = pizzaService.findPizzaById(id);
-		Pizza pizza = optPizza.get();
+		Optional<Drink> optDrink = drinkService.findDrinkById(id);
+		Drink drink = optDrink.get();
 
-		model.addAttribute("pizza", pizza);
+		model.addAttribute("drink", drink);
 
-		return "pizza-update";
+		return "drink-update";
 	}
 
-	@PostMapping("/pizza/edit")
-	public String updatePizza(@Valid Pizza pizza) {
+	@PostMapping("/edit")
+	public String updateDrink(@Valid Drink drink) {
 
-		pizzaService.save(pizza);
+		drinkService.save(drink);
 
-		return "redirect:/";
+		return "redirect:/drink";
 	}
 
-	@GetMapping("/pizza/delete/{id}")
-	public String deletePizza(@PathVariable("id") int id) {
+	@GetMapping("/delete/{id}")
+	public String deleteDrink(@PathVariable("id") int id) {
 
-		pizzaService.deleteById(id);
+		drinkService.deleteById(id);
 
-		return "redirect:/";
+		return "redirect:/drink";
 	}
 }

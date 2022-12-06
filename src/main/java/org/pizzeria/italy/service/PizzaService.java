@@ -2,7 +2,6 @@ package org.pizzeria.italy.service;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.pizzeria.italy.pojo.Pizza;
 import org.pizzeria.italy.repo.PizzaRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,6 @@ public class PizzaService {
 
 		return pizzaRepo.findById(id);
 	}
-
 
 	public void deleteById(int id) {
 

@@ -13,7 +13,7 @@
 		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 			<div class="container-fluid">
 
-				<a class="navbar-brand fw-bold m-auto" th:href="@{/}"><img
+				<a class="navbar-brand fw-bold m-auto" th:href="@{/drink}"><img
 					class="m-auto" th:src="@{/img/luigis.png}" width="180px"
 					height="140px" alt="logo" /></a>
 				<button class="navbar-toggler" type="button"
@@ -29,38 +29,36 @@
 	<div class="container">
 		<div class="row">
 			<div class="col">
-			
-				<h1 class="mt-5 text-center">Luigi's Pizzas List
+				<h1 class="mt-5 text-center">Luigi's Drinks List
 				<img
-					class="m-auto" th:src="@{/img/pizza.png}" width="80px"
-					height="80px" alt="pizza" />
+					class="m-auto" th:src="@{/img/drink.png}" width="80px"
+					height="80px" alt="drink" />
 				</h1>
-				
-				<h2 class="text-center" th:if="${pizzas.isEmpty()}">There are
-					no available pizzas</h2>
+				<h2 class="text-center" th:if="${drinks.isEmpty()}">There are
+					no available drinks</h2>
 					<div class="d-flex justify-content-end">
-				<a href="/pizza/create" class="btn btn-success mb-1 fw-bold">Add a new
-					Pizza</a></div>
-				<table class="table table-primary table-striped">
+				<a href="/drink/create" class="btn btn-success mb-1 fw-bold">Add a new
+					Drink</a></div>
+				<table class="table table-info table-striped">
 					<tr class="text-center">
 						<th>Name</th>
 						<th>Description</th>
 						<th>Price</th>
 						<th></th>
 					</tr>
-					<tr class="text-center" th:each="pizza : ${pizzas}" th:object="${pizza}">
+					<tr class="text-center" th:each="drink : ${drinks}" th:object="${drink}">
 						<td th:text="*{name}"></td>
 						<td th:text="*{description}"></td>
 						<td th:text="*{price}"></td>
-						<td><a th:href="@{/pizza/edit/{id}(id=${pizza.id})}"
+						<td><a th:href="@{/drink/edit/{id}(id=${drink.id})}"
 							class="btn btn-warning fw-bold mx-2">Modify</a> <a
-							th:href="@{/pizza/delete/{id}(id=${pizza.id})}"
+							th:href="@{/drink/delete/{id}(id=${drink.id})}"
 							class="btn btn-danger fw-bold">Delete</a></td>
 					</tr>
 				</table>
 				<div class="d-flex justify-content-center">
-				<a th:href="@{/drink}"
-							class="btn btn-primary fw-bold">Go to Drinks =></a> 
+				<a th:href="@{/}"
+							class="btn btn-info fw-bold">Go to Pizzas =></a> 
 			</div>
 			</div>
 		</div>

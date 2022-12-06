@@ -13,7 +13,7 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table
-public class Pizza {
+public class Drink {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,11 +30,11 @@ public class Pizza {
 	@Min(1)
 	private int price;
 
-	public Pizza() {
+	public Drink() {
 	}
 
-	public Pizza(String name, String description, int price) {
-		
+	public Drink(String name, String description, int price) {
+
 		setName(name);
 		setDescription(description);
 		setPrice(price);
@@ -76,5 +76,4 @@ public class Pizza {
 	public String toString() {
 		return getId() + " - " + getName() + " - " + getDescription() + " - " + getPrice() + "$";
 	}
-
 }
