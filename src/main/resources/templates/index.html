@@ -8,11 +8,14 @@
 <title>Luigi's Pizzeria</title>
 </head>
 <body>
- 
+
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 			<div class="container-fluid">
-				<a class="navbar-brand fw-bold" th:href="@{/}">HOME</a>
+
+				<a class="navbar-brand fw-bold m-auto" th:href="@{/}"><img
+					class="m-auto" th:src="@{/img/luigis.png}" width="120px"
+					height="100px" alt="logo" /></a>
 				<button class="navbar-toggler" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarNav"
 					aria-controls="navbarNav" aria-expanded="false"
@@ -22,14 +25,16 @@
 			</div>
 		</nav>
 	</header>
-	
+
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				<h1 class="mt-5 text-center">Luigi's Pizzas</h1>
-
-				<table
-					class="table table-dark table-striped">
+				<h1 class="mt-5 text-center">Luigi's Pizza List</h1>
+				<h2 class="text-center" th:if="${pizzas.isEmpty()}">There are
+					no available pizzas</h2>
+				<a href="/pizza/create" class="btn btn-success mb-1">Add a new
+					Pizza</a>
+				<table class="table table-dark table-striped">
 					<tr>
 						<th>Name</th>
 						<th>Description</th>
@@ -40,15 +45,10 @@
 						<td th:text="*{name}"></td>
 						<td th:text="*{description}"></td>
 						<td th:text="*{price}"></td>
-						<td>
-						
-						<a th:href="@{/pizza/edit/{id}(id=${pizza.id})}"
-							class="btn btn-warning">Modify</a> 
-							
-							<a
+						<td><a th:href="@{/pizza/edit/{id}(id=${pizza.id})}"
+							class="btn btn-warning">Modify</a> <a
 							th:href="@{/pizza/delete/{id}(id=${pizza.id})}"
-							class="btn btn-danger">Delete</a>
-							</td>
+							class="btn btn-danger">Delete</a></td>
 					</tr>
 				</table>
 			</div>
