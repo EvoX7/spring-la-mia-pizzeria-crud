@@ -32,8 +32,8 @@
 						class="nav-link">Pizzas</a></li>
 					<li class="nav-item fw-bold"><a th:href="@{/drink}"
 						class="nav-link">Drinks</a></li>
-					<li class="nav-item fw-bold"><a class="nav-link" href="#">About
-							Us</a></li>
+					<li class="nav-item fw-bold"><a class="nav-link"
+						th:href="@{/globalsearch}">Search by name</a></li>
 				</ul>
 
 			</div>
@@ -53,11 +53,12 @@
 					no available pizzas</h2>
 				<div class="d-flex justify-content-between mb-2">
 					<div>
-						<a href="/pizza/search" class="btn btn-primary fw-bold">Search your pizza</a>
+						<a href="/pizza/search" class="btn btn-primary fw-bold">Search
+							your pizza</a>
 					</div>
 					<div>
-						<a href="/drink/create" class="btn btn-success mb-1 fw-bold">Add
-							a new Drink</a>
+						<a href="/pizza/create" class="btn btn-success mb-1 fw-bold">Add
+							a new Pizza</a>
 					</div>
 				</div>
 				<table class="table table-primary table-striped">
