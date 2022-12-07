@@ -48,7 +48,7 @@
 					no available drinks</h2>
 				<div class="d-flex justify-content-between mb-2">
 					<div>
-						<form class="d-flex" role="search">
+						<form class="d-flex" role="search" method="GET" action="/drink/search">
 							<input class="form-control me-2" type="text" name="query"
 								th:value="${query}" aria-label="Search">
 							<button class="btn btn-outline-primary" type="submit">Search</button>
